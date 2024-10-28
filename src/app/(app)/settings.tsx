@@ -1,19 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Env } from '@env';
-import { useColorScheme } from 'nativewind';
 
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
-import { ThemeItem } from '@/components/settings/theme-item';
 import { useAuth } from '@/core';
 import { colors, FocusAwareStatusBar, ScrollView, View } from '@/ui';
 import { Github, Rate, Share, Support, Website } from '@/ui/icons';
 
 export default function Settings() {
   const signOut = useAuth.use.signOut();
-  const { colorScheme } = useColorScheme();
-  const iconColor =
-    colorScheme === 'dark' ? colors.neutral[400] : colors.neutral[500];
+
+  const iconColor = colors.neutral[500];
   return (
     <>
       <FocusAwareStatusBar />
@@ -21,7 +18,8 @@ export default function Settings() {
       <ScrollView>
         <View className="flex-1 px-4 pt-16 ">
           <ItemsContainer title="General">
-            <ThemeItem />
+            <Item text="App Name" value={Env.NAME} />
+            <Item text="Version" value={Env.VERSION} />
           </ItemsContainer>
 
           <ItemsContainer title="About">
