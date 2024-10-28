@@ -1,7 +1,7 @@
+import AntDesign from '@expo/vector-icons/AntDesign';
 import * as React from 'react';
 
 import { Pressable, Text, View } from '@/ui';
-import { ArrowRight } from '@/ui/icons';
 
 type ItemProps = {
   text: string;
@@ -26,7 +26,7 @@ export const Item = ({ text, value, icon, onPress }: ItemProps) => {
         <Text className="text-red-800 dark:text-white">{value}</Text>
         {isPressable && (
           <View className="pl-2">
-            <ArrowRight />
+            <AntDesign name="arrowright" size={15} color="black" />
           </View>
         )}
       </View>

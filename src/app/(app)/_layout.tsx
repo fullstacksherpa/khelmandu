@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unstable-nested-components */
-import Ionicons from '@expo/vector-icons/AntDesign';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Link, Redirect, SplashScreen, Tabs } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
 import { Image } from 'react-native';
 
+import { MyTabBar } from '@/components/tabbar/tab-bar';
 import { useAuth, useIsFirstTime } from '@/core';
 import { Pressable, Text, View } from '@/ui';
 import {
@@ -34,23 +35,14 @@ export default function TabLayout() {
     return <Redirect href="/login" />;
   }
   return (
-    <Tabs>
+    <Tabs tabBar={(props) => <MyTabBar {...props} />}>
       <Tabs.Screen
         name="index"
-        options={{
-          title: 'Feed',
-          tabBarIcon: ({ color }) => <FeedIcon color={color} />,
-          headerRight: () => <CreateNewPostLink />,
-          tabBarTestID: 'feed-tab',
-        }}
-      />
-      <Tabs.Screen
-        name="home"
         options={{
           headerTitle: '',
           headerLeft: () => (
             <View className="ml-4 flex-row items-center gap-2">
-              <Text className="text-lg font-medium">Dasarahalli</Text>
+              <Text className="text-lg font-medium">Kathmandu</Text>
             </View>
           ),
           headerRight: ({ tintColor }) => (
@@ -69,7 +61,7 @@ export default function TabLayout() {
                 <Image
                   className="h-8 w-8 rounded-full"
                   source={{
-                    uri: 'https://accounts.google.com/SignOutOptions?hl=en&continue=https://mail.google.com/mail&service=mail&ec=GBRAFw',
+                    uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJqcSD_2qz834cW2RuNWmvAbOMwcZdWSf81Q&s',
                   }}
                 />
               </Pressable>
@@ -77,11 +69,20 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="play"
+        options={{
+          title: 'PLAY',
+          tabBarIcon: ({ color }) => <FeedIcon color={color} />,
+          headerRight: () => <CreateNewPostLink />,
+          tabBarTestID: 'feed-tab',
+        }}
+      />
 
       <Tabs.Screen
-        name="style"
+        name="book"
         options={{
-          title: 'Style',
+          title: 'BOOK',
           headerShown: false,
           tabBarIcon: ({ color }) => <StyleIcon color={color} />,
           tabBarTestID: 'style-tab',
