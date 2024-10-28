@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import {
+  type GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+} from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -9,6 +13,15 @@ import Animated, {
 
 import { icon } from '@/constants/icon';
 
+interface TabBarButtonProps {
+  onPress: (event: GestureResponderEvent) => void;
+  onLongPress: (event: GestureResponderEvent) => void;
+  isFocused: boolean;
+  routeName: keyof typeof icon;
+  color: string;
+  label: string;
+}
+
 export const TabBarButton = ({
   onPress,
   onLongPress,
@@ -16,14 +29,7 @@ export const TabBarButton = ({
   routeName,
   color,
   label,
-}: {
-  onPress: Function;
-  onLongPress: Function;
-  isFocused: boolean;
-  routeName: string;
-  color: string;
-  label: string;
-}) => {
+}: TabBarButtonProps) => {
   const scale = useSharedValue(0);
 
   useEffect(() => {

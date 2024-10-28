@@ -7,6 +7,8 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 
+import { type icon } from '@/constants/icon';
+
 import { TabBarButton } from './tabbar-button';
 
 // eslint-disable-next-line max-lines-per-function
@@ -48,12 +50,18 @@ export function MyTabBar({
       />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-              ? options.title
-              : route.name;
+        // Safely handle tabBarLabel or title
+        const getLabel = () => {
+          if (typeof options.tabBarLabel === 'string') {
+            return options.tabBarLabel;
+          }
+          if (typeof options.title === 'string') {
+            return options.title;
+          }
+          return route.name; // Fallback to route name
+        };
+
+        const label = getLabel();
 
         const isFocused = state.index === index;
 
@@ -85,7 +93,7 @@ export function MyTabBar({
             onPress={onPress}
             onLongPress={onLongPress}
             isFocused={isFocused}
-            routeName={route.name}
+            routeName={route.name as keyof typeof icon}
             color={isFocused ? '#fff' : '#222'}
             label={label}
           />
