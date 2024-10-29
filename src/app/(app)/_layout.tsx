@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Link, Redirect, SplashScreen, Tabs } from 'expo-router';
+import { Redirect, SplashScreen, Tabs } from 'expo-router';
 import React, { useCallback, useEffect } from 'react';
 import { Image } from 'react-native';
 
@@ -91,13 +91,3 @@ export default function TabLayout() {
     </Tabs>
   );
 }
-
-const CreateNewPostLink = () => {
-  return (
-    <Link href="/feed/add-post" asChild>
-      <Pressable>
-        <Text className="px-3 text-primary-300">Create</Text>
-      </Pressable>
-    </Link>
-  );
-};
