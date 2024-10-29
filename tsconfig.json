@@ -13,7 +13,7 @@
   "exclude": [
     "node_modules",
     "babel.config.js",
-    "metro.config.js",
+    "metro.config.cjs",
     "docs",
     "cli",
     "android",
