@@ -3,8 +3,14 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 
+import { type Facility } from '@/app/(app)/book';
+
+interface VenueCardProps {
+  item: Facility;
+}
+
 // eslint-disable-next-line max-lines-per-function
-const VenueCard = ({ item }) => {
+const VenueCard = ({ item }: VenueCardProps) => {
   const router = useRouter();
   // const navigation = useNavigation();
   return (

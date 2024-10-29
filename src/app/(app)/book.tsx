@@ -13,9 +13,37 @@ import {
 
 import VenueCard from '@/components/book/venue-card';
 
+// Interface for individual courts
+interface Court {
+  id: string;
+  name: string;
+}
+
+// Interface for each sport available
+interface Sport {
+  id: string;
+  name: string;
+  icon: string;
+  price: number;
+  courts: Court[];
+}
+
+// Interface for each facility or item in the list
+export interface Facility {
+  id: string;
+  name: string;
+  address: string;
+  location: string;
+  image: string;
+  newImage: string;
+  rating: number;
+  timings: string;
+  sportsAvailable: Sport[];
+}
+
 // eslint-disable-next-line max-lines-per-function
 const BookScreen = () => {
-  const data = [
+  const data: Facility[] = [
     {
       id: '0',
       name: "DDSA - St.Joseph's Boys' High School (European)",
