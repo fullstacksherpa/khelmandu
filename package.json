@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "main": "expo-router/entry",
+  "type": "module",
   "scripts": {
     "start": "cross-env EXPO_NO_DOTENV=1 expo start",
     "prebuild": "cross-env EXPO_NO_DOTENV=1 pnpm expo prebuild",

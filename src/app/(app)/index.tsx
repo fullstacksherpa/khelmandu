@@ -54,6 +54,9 @@ export default function HomeScreen() {
           flexDirection: 'row',
           alignItems: 'center',
           gap: 12,
+          shadowColor: 'black',
+          shadowRadius: 40,
+          shadowOpacity: 0.2,
         }}
       >
         <View>

@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import type { PressableProps, View } from 'react-native';
 import { ActivityIndicator, Pressable, Text } from 'react-native';
 import type { VariantProps } from 'tailwind-variants';
 import { tv } from 'tailwind-variants';
 
+// Define button styles using `tv`
 const button = tv({
   slots: {
     container: 'my-2 flex flex-row items-center justify-center rounded-md px-4',
     label: 'font-inter text-base font-semibold',
     indicator: 'h-6 text-white',
   },
-
   variants: {
     variant: {
       default: {
@@ -68,12 +68,8 @@ const button = tv({
       },
     },
     fullWidth: {
-      true: {
-        container: '',
-      },
-      false: {
-        container: 'self-center',
-      },
+      true: { container: 'w-full' },
+      false: { container: 'self-center' },
     },
   },
   defaultVariants: {
@@ -84,7 +80,9 @@ const button = tv({
   },
 });
 
+// Define types for button variants
 type ButtonVariants = VariantProps<typeof button>;
+
 interface Props extends ButtonVariants, Omit<PressableProps, 'disabled'> {
   label?: string;
   loading?: boolean;
@@ -92,7 +90,8 @@ interface Props extends ButtonVariants, Omit<PressableProps, 'disabled'> {
   textClassName?: string;
 }
 
-export const Button = React.forwardRef<View, Props>(
+// Use React.forwardRef properly
+export const Button = forwardRef<View, Props>(
   (
     {
       label: text,
@@ -105,19 +104,20 @@ export const Button = React.forwardRef<View, Props>(
       textClassName = '',
       ...props
     },
-    ref
+    ref,
   ) => {
-    const styles = React.useMemo(
+    // Memoize the styles based on props
+    const styles = useMemo(
       () => button({ variant, disabled, size }),
-      [variant, disabled, size]
+      [variant, disabled, size],
     );
 
     return (
       <Pressable
+        ref={ref}
         disabled={disabled || loading}
         className={styles.container({ className })}
         {...props}
-        ref={ref}
         testID={testID}
       >
         {props.children ? (
@@ -142,5 +142,7 @@ export const Button = React.forwardRef<View, Props>(
         )}
       </Pressable>
     );
-  }
+  },
 );
+
+export default Button;

@@ -7,11 +7,6 @@ import { Image } from 'react-native';
 import { MyTabBar } from '@/components/tabbar/tab-bar';
 import { useAuth, useIsFirstTime } from '@/core';
 import { Pressable, Text, View } from '@/ui';
-import {
-  Feed as FeedIcon,
-  Settings as SettingsIcon,
-  Style as StyleIcon,
-} from '@/ui/icons';
 
 // eslint-disable-next-line max-lines-per-function
 export default function TabLayout() {
@@ -72,9 +67,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="play"
         options={{
-          title: 'PLAY',
-          tabBarIcon: ({ color }) => <FeedIcon color={color} />,
-          headerRight: () => <CreateNewPostLink />,
+          headerShown: false,
           tabBarTestID: 'feed-tab',
         }}
       />
@@ -84,7 +77,6 @@ export default function TabLayout() {
         options={{
           title: 'BOOK',
           headerShown: false,
-          tabBarIcon: ({ color }) => <StyleIcon color={color} />,
           tabBarTestID: 'style-tab',
         }}
       />
@@ -93,7 +85,6 @@ export default function TabLayout() {
         options={{
           title: 'Settings',
           headerShown: false,
-          tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
           tabBarTestID: 'settings-tab',
         }}
       />

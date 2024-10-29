@@ -57,7 +57,7 @@ export default function OnboardingScreen() {
 
   const endOnboarding = () => {
     setScreenIndex(0);
-    router.back();
+    router.push('/(app)');
   };
 
   const swipeForward = Gesture.Fling()
