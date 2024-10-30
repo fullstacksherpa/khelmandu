@@ -13,6 +13,8 @@ import {
   View,
 } from 'react-native';
 
+import Amenities from '@/components/book/amenities';
+
 // import Amenities from '../components/Amenities';
 
 // eslint-disable-next-line max-lines-per-function
@@ -181,7 +183,7 @@ const VenueInfoScreen = () => {
               ))}
             </ScrollView> */}
 
-            {/* <Amenities /> */}
+            <Amenities />
 
             <View style={{ marginHorizontal: 10 }}>
               <Text style={{ fontSize: 15, fontWeight: 'bold' }}>
