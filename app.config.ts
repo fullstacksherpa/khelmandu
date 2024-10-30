@@ -1,7 +1,7 @@
 /* eslint-disable max-lines-per-function */
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 
-import { ClientEnv, Env } from './env.cjs';
+import { ClientEnv, Env } from './env.js/index.js';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
