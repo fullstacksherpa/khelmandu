@@ -138,7 +138,7 @@ export default function HomeScreen() {
           </View>
 
           <Text style={{ marginTop: 4, color: 'gray' }}>
-            {upcomingGames?.length == 0
+            {upcomingGames?.length === 0
               ? 'You have no Games Today'
               : 'You have Games waiting in your calender'}
           </Text>

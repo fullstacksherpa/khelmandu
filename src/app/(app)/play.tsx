@@ -140,7 +140,7 @@ const PlayScreen = () => {
             <Text
               style={{
                 fontWeight: '500',
-                color: option == 'Calendar' ? '#12e04c' : 'white',
+                color: option === 'Calendar' ? '#12e04c' : 'white',
                 fontSize: 15,
               }}
             >
@@ -152,7 +152,7 @@ const PlayScreen = () => {
             <Text
               style={{
                 fontWeight: '500',
-                color: option == 'My Sports' ? '#12e04c' : 'white',
+                color: option === 'My Sports' ? '#12e04c' : 'white',
                 fontSize: 15,
               }}
             >
@@ -164,7 +164,7 @@ const PlayScreen = () => {
             <Text
               style={{
                 fontWeight: '500',
-                color: option == 'Other Sports' ? '#12e04c' : 'white',
+                color: option === 'Other Sports' ? '#12e04c' : 'white',
                 fontSize: 15,
               }}
             >
@@ -180,11 +180,11 @@ const PlayScreen = () => {
               style={{
                 padding: 10,
                 borderColor: 'white',
-                borderWidth: sport == 'Badminton' ? 0 : 1,
+                borderWidth: sport === 'Badminton' ? 0 : 1,
                 marginRight: 10,
                 borderRadius: 8,
                 backgroundColor:
-                  sport == 'Badminton' ? '#1dbf22' : 'transparent',
+                  sport === 'Badminton' ? '#1dbf22' : 'transparent',
               }}
             >
               <Text style={{ color: 'white', fontWeight: '600', fontSize: 15 }}>
@@ -197,10 +197,11 @@ const PlayScreen = () => {
               style={{
                 padding: 10,
                 borderColor: 'white',
-                borderWidth: sport == 'Cricket' ? 0 : 1,
+                borderWidth: sport === 'Cricket' ? 0 : 1,
                 marginRight: 10,
                 borderRadius: 8,
-                backgroundColor: sport == 'Cricket' ? '#1dbf22' : 'transparent',
+                backgroundColor:
+                  sport === 'Cricket' ? '#1dbf22' : 'transparent',
               }}
             >
               <Text style={{ color: 'white', fontWeight: '600', fontSize: 15 }}>
@@ -213,10 +214,11 @@ const PlayScreen = () => {
               style={{
                 padding: 10,
                 borderColor: 'white',
-                borderWidth: sport == 'Cycling' ? 0 : 1,
+                borderWidth: sport === 'Cycling' ? 0 : 1,
                 marginRight: 10,
                 borderRadius: 8,
-                backgroundColor: sport == 'Cycling' ? '#1dbf22' : 'transparent',
+                backgroundColor:
+                  sport === 'Cycling' ? '#1dbf22' : 'transparent',
               }}
             >
               <Text style={{ color: 'white', fontWeight: '600', fontSize: 15 }}>
@@ -229,10 +231,11 @@ const PlayScreen = () => {
               style={{
                 padding: 10,
                 borderColor: 'white',
-                borderWidth: sport == 'Running' ? 0 : 1,
+                borderWidth: sport === 'Running' ? 0 : 1,
                 marginRight: 10,
                 borderRadius: 8,
-                backgroundColor: sport == 'Running' ? '#1dbf22' : 'transparent',
+                backgroundColor:
+                  sport === 'Running' ? '#1dbf22' : 'transparent',
               }}
             >
               <Text style={{ color: 'white', fontWeight: '600', fontSize: 15 }}>
