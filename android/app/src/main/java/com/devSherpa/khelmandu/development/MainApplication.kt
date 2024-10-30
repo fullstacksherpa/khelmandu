@@ -1,4 +1,4 @@
-package com.khelmandu.development
+package com.devSherpa.khelmandu.development
 
 import android.app.Application
 import android.content.res.Configuration

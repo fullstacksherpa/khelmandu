@@ -1,4 +1,4 @@
-package com.khelmandu.development
+package com.devSherpa.khelmandu.development
 
 import android.os.Build
 import android.os.Bundle

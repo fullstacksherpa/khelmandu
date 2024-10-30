@@ -41,8 +41,8 @@ require('dotenv').config({
 const BUNDLE_ID = 'com.devSherpa.khelmandu'; // ios bundle id
 const PACKAGE = 'com.devSherpa.khelmandu'; // android package name
 const NAME = 'khelmandu'; // app name
-const EXPO_ACCOUNT_OWNER = 'expo-owner'; // expo account owner
-const EAS_PROJECT_ID = 'c3e1075b-6fe7-4686-aa49-35b46a229044'; // eas project id
+const EXPO_ACCOUNT_OWNER = 'fullstacksherpa'; // expo account owner
+const EAS_PROJECT_ID = '62a6067e-1b89-403c-8eea-ddcc3c503d78'; // eas project id
 const SCHEME = 'khelmandu'; // app scheme
 
 /**

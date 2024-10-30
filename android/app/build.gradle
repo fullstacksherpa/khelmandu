@@ -109,9 +109,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.khelmandu.development'
+    namespace 'com.devSherpa.khelmandu.development'
     defaultConfig {
-        applicationId 'com.khelmandu.development'
+        applicationId 'com.devSherpa.khelmandu.development'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
