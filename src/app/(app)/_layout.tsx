@@ -11,7 +11,9 @@ import { Pressable, Text, View } from '@/ui';
 // eslint-disable-next-line max-lines-per-function
 export default function TabLayout() {
   const status = useAuth.use.status();
+  console.log(`User is currently ${status}🚨`);
   const [isFirstTime] = useIsFirstTime();
+  console.log(`Is it firstTime ${isFirstTime}🥇`);
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync();
   }, []);

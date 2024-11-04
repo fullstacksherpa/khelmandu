@@ -64,6 +64,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
           secureTextEntry={true}
         />
         <Button
+          className="items-center bg-[#1ec921] py-1 text-center"
           testID="login-button"
           label="Login"
           onPress={handleSubmit(onSubmit)}

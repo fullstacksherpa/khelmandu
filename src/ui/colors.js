@@ -1,6 +1,11 @@
 module.exports = {
   white: '#ffffff',
   black: '#000000',
+  khel: {
+    primary: '#1ec921',
+    primary2: '#14532D',
+    
+  },
   charcoal: {
     50: '#F2F2F2',
     100: '#E5E5E5',

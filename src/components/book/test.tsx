@@ -1,6 +1,4 @@
-import { getToken, removeToken, setToken } from '@/core/auth/utils';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import axios from 'axios';
 import { router, Stack } from 'expo-router';
 import { useState } from 'react';
 import {
@@ -31,8 +29,8 @@ const onboardingSteps = [
     inputType: 'account', // This indicates we need to handle email, phone, and password
   },
   {
-    title: 'Complete Your Profile',
-    description: 'What would you like your team member to call you ?',
+    title: 'Your Name',
+    description: 'Please enter your first and last name.',
     inputType: 'name', // This indicates we need to handle first and last name
   },
   {
@@ -54,26 +52,6 @@ export default function OnboardingScreen() {
     image: null,
   });
 
-  const images = [
-    {
-      id: '0',
-      image: 'https://cdn-icons-png.flaticon.com/128/16683/16683469.png',
-    },
-    {
-      id: '0',
-      image: 'https://cdn-icons-png.flaticon.com/128/16683/16683439.png',
-    },
-    {
-      id: '0',
-      image: 'https://cdn-icons-png.flaticon.com/128/4202/4202835.png',
-    },
-    {
-      id: '0',
-      image: 'https://cdn-icons-png.flaticon.com/128/3079/3079652.png',
-    },
-  ];
-  console.log(userData);
-
   const data = onboardingSteps[screenIndex];
 
   const onContinue = () => {
@@ -88,7 +66,7 @@ export default function OnboardingScreen() {
   const onBack = () => {
     const isFirstScreen = screenIndex === 0;
     if (isFirstScreen) {
-      return;
+      endOnboarding();
     } else {
       setScreenIndex(screenIndex - 1);
     }
@@ -112,59 +90,6 @@ export default function OnboardingScreen() {
   const handleInputChange = (key, value) => {
     setUserData({ ...userData, [key]: value });
   };
-  const registerUser = async () => {
-    const formData = new FormData();
-    formData.append('email', userData.email);
-    formData.append('phoneNumber', userData.phone);
-    formData.append('password', userData.password);
-    formData.append('firstName', userData.firstName);
-    formData.append('lastName', userData.lastName);
-
-    // Assuming `userData.image` is the URI of the image selected
-    if (userData.image) {
-      formData.append('image', {
-        uri: userData.image,
-        type: 'image/jpeg', // Change based on your image type
-        name: 'profile.jpg', // Set a name for the file
-      } as any);
-    }
-
-    try {
-      const response = await axios
-        .post('http://localhost:8000/auth/register', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then((response) => {
-          console.log(response);
-          const token = response.data.data.token;
-          removeToken();
-          setToken(token);
-        });
-      console.log('Registration success:');
-      const TOKKEN = getToken();
-      console.log(TOKKEN);
-      if (TOKKEN) {
-        router.push('/(app)');
-      }
-    } catch (error) {
-      console.log('Error during registration:', error);
-    }
-  };
-  // const registerUser = async () => {
-  //   try {
-  //     const response = await axios
-  //       .post('http://localhost:8000/auth/register', userData)
-  //       .then((response) => {
-  //         console.log(response);
-  //         const token = response.data.token;
-  //         setToken(token);
-  //       });
-  //   } catch (error) {
-  //     console.log('error while executing registerUser', error);
-  //   }
-  // };
 
   // eslint-disable-next-line max-lines-per-function
   const renderInput = () => {
@@ -242,82 +167,27 @@ export default function OnboardingScreen() {
         );
       case 2:
         return (
-          <View style={{ backgroundColor: 'white' }}>
-            <View style={{ marginVertical: 25 }}>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Image
-                  style={{
-                    width: 100,
-                    height: 100,
-                    borderRadius: 50,
-                    borderColor: 'green',
-                    borderWidth: 2,
-                    resizeMode: 'cover',
-                  }}
-                  source={{
-                    uri: userData.image ? userData.image : images[0]?.image,
-                  }}
-                />
-              </View>
-
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  marginVertical: 25,
-                  justifyContent: 'center',
-                }}
-              >
-                {images?.map((item, index) => (
-                  <Pressable
-                    onPress={() => handleInputChange('image', item?.image)}
-                    style={{ margin: 10, gap: 10 }}
-                    key={index}
-                  >
-                    <Image
-                      style={{
-                        width: 70,
-                        height: 70,
-                        borderRadius: 35,
-                        borderColor:
-                          userData.image === item?.image
-                            ? 'green'
-                            : 'transparent',
-                        borderWidth: 2,
-                        resizeMode: 'contain',
-                      }}
-                      source={{ uri: item.image }}
-                    />
-                  </Pressable>
-                ))}
-              </View>
-
-              <Text
-                style={{ textAlign: 'center', color: 'gray', fontSize: 17 }}
-              >
-                OR
+          <View style={{ marginTop: 20 }}>
+            <Pressable
+              onPress={() => {
+                /* Handle image picker here */
+              }}
+            >
+              <Text style={{ color: '#cef202', fontSize: 18 }}>
+                Upload Image
               </Text>
-              <View style={{ marginHorizontal: 20, marginVertical: 20 }}>
-                <View>
-                  <Text style={{ fontSize: 16, color: 'gray' }}>
-                    Enter Image link
-                  </Text>
-
-                  <TextInput
-                    value={userData.image ? userData.image : images[0]?.image}
-                    onChangeText={(value) => handleInputChange('image', value)}
-                    placeholder="Image link"
-                    style={{
-                      padding: 18,
-                      borderColor: '#D0D0D0',
-                      borderWidth: 1,
-                      borderRadius: 10,
-                      marginTop: 10,
-                    }}
-                  />
-                </View>
-              </View>
-            </View>
+            </Pressable>
+            {userData.image && (
+              <Image
+                source={{ uri: userData.image }} // Assuming `userData.image` is a URI
+                style={{
+                  width: 100,
+                  height: 100,
+                  marginTop: 10,
+                  borderRadius: 10,
+                }}
+              />
+            )}
           </View>
         );
       default:
@@ -364,32 +234,22 @@ export default function OnboardingScreen() {
               {data.description}
             </Animated.Text>
             {renderInput()}
+            <View className="mt-20 flex-row items-center gap-16">
+              <Pressable onPress={onBack} className=" items-center ">
+                <Ionicons name="arrow-back" size={30} color="black" />
+              </Pressable>
+              <Pressable
+                onPress={onContinue}
+                className="flex-1 items-center rounded-3xl bg-['#1ec921'] "
+              >
+                <Text className="p-4 text-base font-bold leading-5 tracking-widest text-[#fdfdfd] ">
+                  Continue
+                </Text>
+              </Pressable>
+            </View>
           </View>
         </Animated.View>
       </GestureDetector>
-      <View className="mb-8 mt-auto flex-row items-center gap-16 px-6">
-        <Pressable
-          onPress={onBack}
-          className="items-center"
-          disabled={screenIndex === 0}
-          style={{ opacity: screenIndex === 0 ? 0.5 : 1 }} // Lower opacity when disabled
-        >
-          <Ionicons
-            name="arrow-back"
-            size={30}
-            color={screenIndex === 0 ? 'grey' : 'black'} // Gray color when disabled
-          />
-        </Pressable>
-
-        <Pressable
-          onPress={screenIndex === 2 ? registerUser : onContinue}
-          className="flex-1 items-center rounded-3xl bg-['#1ec921'] "
-        >
-          <Text className="p-4 text-base font-bold leading-5 tracking-widest text-[#fdfdfd] ">
-            {screenIndex === 2 ? 'Finish Registering' : 'Continue'}
-          </Text>
-        </Pressable>
-      </View>
     </SafeAreaView>
   );
 }
