@@ -152,7 +152,7 @@ export default function OnboardingScreen() {
           removeToken();
           setToken(token);
         });
-      console.log('Registration success:');
+      console.log('Registration success:', response);
       const TOKKEN = getToken();
       console.log(TOKKEN);
       if (TOKKEN) {
