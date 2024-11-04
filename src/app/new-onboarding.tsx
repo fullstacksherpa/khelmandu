@@ -1,4 +1,3 @@
-import { getToken, removeToken, setToken } from '@/core/auth/utils';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import axios from 'axios';
 import { router, Stack } from 'expo-router';
@@ -23,6 +22,8 @@ import Animated, {
   SlideInRight,
   SlideOutLeft,
 } from 'react-native-reanimated';
+
+import { getToken, removeToken, setToken } from '@/core/auth/utils';
 
 const onboardingSteps = [
   {
