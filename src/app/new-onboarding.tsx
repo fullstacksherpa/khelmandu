@@ -54,6 +54,15 @@ export default function OnboardingScreen() {
     image: null,
   });
 
+  type UserData = {
+    email: string;
+    phone: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    image: string | null; // or string if you prefer to avoid null
+  };
+
   const images = [
     {
       id: '0',
@@ -109,9 +118,10 @@ export default function OnboardingScreen() {
 
   const swipes = Gesture.Simultaneous(swipeBack, swipeForward);
 
-  const handleInputChange = (key, value) => {
+  const handleInputChange = (key: keyof UserData, value: string | null) => {
     setUserData({ ...userData, [key]: value });
   };
+
   const registerUser = async () => {
     const formData = new FormData();
     formData.append('email', userData.email);
